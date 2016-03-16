@@ -1,9 +1,53 @@
 var app = angular.module('myApp', ['ja.qr'])
   .controller('myCtrl', function($scope, datePicker) {
-    $scope.firstName= "John";
-    $scope.lastName= "Doe";
+  	var currentTime = new Date().toLocaleDateString('en-US', {  
+	    day : 'numeric',
+	    month : 'numeric',
+	    year : 'numeric'
+	}).split(' ').join('-');
+	$scope.date = currentTime;
+    $scope.institution = "";
+    $scope.department = -1;
+    $scope.contact = {
+    	name : "",
+    	tel : "",
+    	email : "",
+    	indication : ""
+    };
+    $scope.preop = {
+    	mallampati: -1,
+    	thyromental: -1,
+    	tongue: -1,
+    	neck: -1,
+    	radiation: -1,
+    	congenital: -1,
+    	aspiration: -1,
+    	bmi: -1,
+    	bag: -1
+    };
+    $scope.att1 = {
+    	device: "",
+    	comments: "",
+    	success: -1
+    };
+    $scope.att2 = {
+    	device: "",
+    	comments: "",
+    	success: -1
+    };
+    $scope.att3 = {
+    	device: "",
+    	comments: "",
+    	success: -1
+    };
+    $scope.further = ""
+
     $scope.toValue = function() {
-      return $scope.firstName + " " + $scope.lastName;
+      return [$scope.date, $scope.institution, $scope.department, $scope.contact.name, $scope.contact.tel, 
+      	$scope.contact.email, $scope.contact.indication, $scope.preop.mallampati, $scope.preop.thyromental, $scope.preop.tongue, $scope.preop.neck,
+      	$scope.preop.radiation, $scope.preop.congenital, $scope.preop.aspiration, $scope.preop.bmi, $scope.preop.bag, $scope.att1.device,
+      	 $scope.att1.comments, $scope.att1.success, $scope.att2.device, $scope.att2.comments, $scope.att2.success, $scope.att3.device, 
+      	 $scope.att3.comments, $scope.att3.success, $scope.further].join(',');
     } 
     datePicker.load();
 	})
@@ -11,7 +55,7 @@ var app = angular.module('myApp', ['ja.qr'])
     return({
         load: load
     });
-    
+
     function load() {
         // Apply the script inject in the next tick of the event loop. This
         // will give AngularJS time to safely finish its compile and linking.
@@ -32,6 +76,11 @@ var app = angular.module('myApp', ['ja.qr'])
 		  today: 'Today',
 		  clear: 'Clear',
 		  close: 'Close'
+		});
+
+		$('.datepicker').on("dp.change", function() {
+		  	$scope.selecteddate = $("#datetimepicker").val();
+       		alert("selected date is " + $scope.selecteddate);
 		});
     }
 
