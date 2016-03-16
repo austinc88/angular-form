@@ -1,6 +1,6 @@
 <html>
    <head>
-      <title>AngularJS First Application</title>
+      <title>Scanethesia</title>
 
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -11,40 +11,108 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
       <script src = "js/lib/angular.min.js"></script>
-      <script type="text/javascript" src="js/lib/qrcode.js"></script>
-      <script type="text/javascript" src="js/lib/qrcode_UTF8.js"></script>
+      <script type="text/javascript" src="js/lib/qrcode.min.js"></script>
+      <script type="text/javascript" src="js/lib/angular-qr.min.js"></script>
       <script src = "js/app.js"></script>
    </head>
    
    <body ng-app="myApp">
       
       <!-- Dropdown Structure -->
-      <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">one</a></li>
-        <li><a href="#!">two</a></li>
-        <li class="divider"></li>
-        <li><a href="#!">three</a></li>
-      </ul>
       <nav>
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Intubation</a>
+          <a href="#!" class="brand-logo">Scanethesia</a>
         </div>
       </nav>
 
       <div class = "container">
-         <h1>Sample Application</h1>
+         <h1>Scanethesia</h1>
       
          <div ng-controller="myCtrl">
+            <h5> First Name: </h5>
+              <input type="text" ng-model="firstName"><br>
+            <h5> Last Name: </h5>
+              <input type="text" ng-model="lastName"><br>
+            <h5> Date </h5>
+              <input type="text" ng-model="lastName"><br>
+            <h5> Institution </h5>
+              <input type="text" ng-model="lastName"><br>
+            <h5> Department - Checkboxes </h5>
+              Anaesthesia [], Emergency [], Intensive Care [], Other []
+              <input type="text" ng-model="lastName"><br>
+            <h4> Contact </h4>
+              <h5> Name </h5>
+              <input type="text" ng-model="lastName"><br>
+              <h5> Tel No. </h5>
+              <input type="text" ng-model="lastName"><br>
+              <h5> Email </h5>
+              <input type="text" ng-model="lastName"><br>
 
-            First Name: <input type="text" ng-model="firstName"><br>
-            Last Name: <input type="text" ng-model="lastName"><br>
+            <h5> Indication for Airway Management </h5>
+              <input type="text" ng-model="lastName"><br>
+
+            <h4> Pre-OP Physical Characteristics </h4>
+              <h5> Mallampati Score </h5>
+              I [], ii [], iii [], iv []
+              <input type="text" ng-model="lastName"><br>
+              <h5> Thyromental Distance < 6 cm </h5>
+              yes [] no []
+              <input type="text" ng-model="lastName"><br>
+              <h5> Large Tongue? </h5>
+              yes [] no []
+              <input type="text" ng-model="lastName"><br>
+              <h5> Neck Mobility reduced ? </h5>
+              yes [] no []
+              <input type="text" ng-model="lastName"><br>
+              <h5> Radiation/ Surgery to Head or Neck? </h5>
+              yes [] no []
+              <input type="text" ng-model="lastName"><br>
+              <h5> Congenital Abnormality? </h5>
+              yes [] no []
+              <input type="text" ng-model="lastName"><br>
+              <h5> Increased Aspiration Risk? </h5>
+              yes [] no []
+              <input type="text" ng-model="lastName"><br>
+              <h5> Raised BMI? </h5>
+              yes [] no []
+              <input type="text" ng-model="lastName"><br>
+
+              <h5> Bag Mask Ventilation </h5>
+              Easy [], With Oropharyngeal Airway [], With nasal Airway [], Two person technique [], Unsuccessful []
+              <input type="text" ng-model="lastName"><br>
+
+              <h4> Sequence of events </h4>
+              <h5> Attempt 1 </h5>
+              Device Used
+              <input type="text" ng-model="lastName"><br>
+              Comments
+              <input type="text" ng-model="lastName"><br>
+              Successful [] Unsuccessful []
+              <input type="text" ng-model="lastName"><br>
+              <h5> Attempt 2 </h5>
+              Device Used
+              <input type="text" ng-model="lastName"><br>
+              Comments
+              <input type="text" ng-model="lastName"><br>
+              Successful [] Unsuccessful []
+              <input type="text" ng-model="lastName"><br>
+              <h5> Attempt 3 </h5>
+              Device Used
+              <input type="text" ng-model="lastName"><br>
+              Comments
+              <input type="text" ng-model="lastName"><br>
+              Successful [] Unsuccessful []
+              <input type="text" ng-model="lastName"><br>
+
+              <h5> Further Comments </h5>
+              <input type="text" ng-model="lastName"><br>
             <br>
             Full Name: {{firstName + " " + lastName}}
 
             <br>
 
+            <qr type-number="20" correction-level="'L'" size="300" text="toValue()"></qr>
 
-            <qrcode version="40" error-correction-level="L" size="400" data="{{firstName + lastName}}"></qrcode>
          </div>
       </div>
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
