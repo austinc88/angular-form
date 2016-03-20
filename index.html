@@ -16,6 +16,7 @@
       <script type="text/javascript" src="js/lib/qrcode.min.js"></script>
       <script type="text/javascript" src="js/lib/angular-qr.min.js"></script>
       <script src = "js/app.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
    </head>
    
    <body ng-app="myApp">
@@ -32,7 +33,7 @@
       
          <div ng-controller="myCtrl">
               <div class="input-field col s12">
-                <input type="text" format="dd mmm" id="date" class="datepicker" ng-model="date" readonly ><br>
+                <input type="text" format="dd mmm" id="date" class="datepicker" ng-model="date" ><br>
                 <label for="date">Date</label>
               </div>
               <div class="input-field col s12">
@@ -64,8 +65,9 @@
                 <input type="text" id="email" ng-model="contact.email">
                 <label for="email">Email</label>
               </div>
+            <br>
               <div class="input-field col s12">
-                <textarea id="indication-airway" class="materialize-textarea" length="150" maxlength="150" ng-model="contact.indication"></textarea>
+                <textarea id="indication-airway" class="materialize-textarea" length="150" maxlength="150" ng-model="indication"></textarea>
                 <label for="indication-airway">Indication for Airway Management</label>
               </div>
             <h5> Pre-OP Physical Characteristics </h5>
@@ -88,6 +90,14 @@
                 <label for="thyromental-yes">Yes</label>
                 <input name="thyromental" class="with-gap" type="radio" id="thyromental-no" ng-model="preop.thyromental" ng-value='1'/>
                 <label for="thyromental-no">No</label>
+              </div>
+              <div class="input-field col s12">
+                <label> Mouth Opening < 3 Fingerbreadths? </label>
+                <br>
+                <input name="mouth" class="with-gap" type="radio" id="mouth-yes" ng-model="preop.mouth" ng-value='0'/>
+                <label for="mouth-yes">Yes</label>
+                <input name="mouth" class="with-gap" type="radio" id="mouth-no" ng-model="preop.mouth" ng-value='1'/>
+                <label for="mouth-no">No</label>
               </div>
               <div class="input-field col s12">
                 <label> Large Tongue? </label>
@@ -137,18 +147,19 @@
                 <input name="bmi" class="with-gap" type="radio" id="bmi-no" ng-model="preop.bmi" ng-value='1'/>
                 <label for="bmi-no">No</label>
               </div>
+              <br>
               <div class="input-field col s12">
                 <label> Bag Mask Ventilation </label>
                 <br>
-                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-easy" ng-model="preop.bag" ng-value='0'/>
+                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-easy" ng-model="bag" ng-value='0'/>
                 <label for="bag-mask-easy">Easy</label>
-                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-oropharyngeal" ng-model="preop.bag" ng-value='1'/>
+                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-oropharyngeal" ng-model="bag" ng-value='1'/>
                 <label for="bag-mask-oropharyngeal">With Oropharyngeal Airway</label>
-                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-nasal" ng-model="preop.bag" ng-value='2'/>
+                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-nasal" ng-model="bag" ng-value='2'/>
                 <label for="bag-mask-nasal">With Nasal Airway</label>
-                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-two" ng-model="preop.bag" ng-value='3'/>
+                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-two" ng-model="bag" ng-value='3'/>
                 <label for="bag-mask-two">Two Person Technique</label>
-                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-unsuccessful" ng-model="preop.bag" ng-value='4'/>
+                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-unsuccessful" ng-model="bag" ng-value='4'/>
                 <label for="bag-mask-unsuccessful">Unsuccessful</label>
               </div>
               <br>
@@ -210,7 +221,10 @@
             <h5> String Form of QR: </h5> {{toValue()}}
               <br>
             <h5> QR </h5>
-            <qr type-number="30" correction-level="'L'" size="300" text="toValue()"></qr>
+            <qr type-number="25" correction-level="'M'" size="250" text="toValue()" image="image"></qr>
+            <br>
+            <button class="waves-effect waves-light btn" ng-click="generatePDF()"> Open as PDF </button>
+            <br>
             <br>
          </div>
       </div>
