@@ -1,0 +1,234 @@
+<html>
+   <head>
+      <title>Difficult Intubation App</title>
+
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <script src = "js/lib/angular.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/lib/qrcode.min.js"></script>
+      <script type="text/javascript" src="js/lib/angular-qr.min.js"></script>
+      <script src = "js/app.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+   </head>
+   
+   <body ng-app="myApp">
+      
+      <!-- Dropdown Structure -->
+      <nav>
+        <div class="nav-wrapper">
+          <a href="index.html" class="brand-logo">Difficult Intubation App</a>
+        </div>
+      </nav>
+
+      <div class = "container">
+         <h1>Difficult Intubation App</h1>
+      
+         <div ng-controller="myCtrl">
+              <div class="input-field col s12">
+                <input type="text" format="dd mmm" id="date" class="datepicker" ng-model="date" ><br>
+                <label for="date">Date</label>
+              </div>
+              <div class="input-field col s12">
+                <input type="text" id="institution" ng-model="institution"><br>
+                <label for="institution">Institution</label>
+              </div>
+              <h6> Department </h6>
+              <div class="input-field col s12">
+                <input name="department" class="with-gap" type="radio" id="department-anaesthesia" ng-model="department" ng-value='0'/>
+                <label for="department-anaesthesia">Anaesthesia</label>
+                <input name="department" class="with-gap" type="radio" id="department-emergency" ng-model="department" ng-value='1'/>
+                <label for="department-emergency">Emergency</label>
+                <input name="department" class="with-gap" type="radio" id="department-intensive" ng-model="department" ng-value='2'/>
+                <label for="department-intensive">Intensive</label>
+                <input name="department" class="with-gap" type="radio" id="department-other" ng-model="department" ng-value='3'/>
+                <label for="department-other">Other</label>
+              </div>
+            <br>
+            <h5> Contact </h5>
+              <div class="input-field col s12">
+                <input type="text" id="contact-name" ng-model="contact.name">
+                <label for="contact-name">Name</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="contact-telephone" placeholder="(604) 777-7777" type="tel" class="validate" ng-model="contact.tel">
+                <label for="contact-telephone">Telephone Number</label>
+              </div>
+              <div class="input-field col s12">
+                <input type="text" id="email" ng-model="contact.email">
+                <label for="email">Email</label>
+              </div>
+            <br>
+              <div class="input-field col s12">
+                <textarea id="indication-airway" class="materialize-textarea" length="150" maxlength="150" ng-model="indication"></textarea>
+                <label for="indication-airway">Indication for Airway Management</label>
+              </div>
+            <h5> Pre-OP Physical Characteristics </h5>
+              <div class="input-field col s12">
+                <button class="waves-effect waves-light btn" ng-click="resetPreOP()"> Reset Pre-OP Values </button>
+                <label> Mallampati Score </label>
+                <br>
+                <input name="mallampati" class="with-gap" type="radio" id="mallampati-i" ng-model="preop.mallampati" ng-value='0'/>
+                <label for="mallampati-i">I</label>
+                <input name="mallampati" class="with-gap" type="radio" id="mallampati-ii" ng-model="preop.mallampati" ng-value='1'/>
+                <label for="mallampati-ii">II</label>
+                <input name="mallampati" class="with-gap" type="radio" id="mallampati-iii" ng-model="preop.mallampati" ng-value='2'/>
+                <label for="mallampati-iii">III</label>
+                <input name="mallampati" class="with-gap" type="radio" id="mallampati-iv" ng-model="preop.mallampati" ng-value='3'/>
+                <label for="mallampati-iv">IV</label>
+              </div>
+              <div class="input-field col s12">
+                <label> Thyromental Distance < 6 cm </label>
+                <br>
+                <input name="thyromental" class="with-gap" type="radio" id="thyromental-yes" ng-model="preop.thyromental" ng-value='0'/>
+                <label for="thyromental-yes">Yes</label>
+                <input name="thyromental" class="with-gap" type="radio" id="thyromental-no" ng-model="preop.thyromental" ng-value='1'/>
+                <label for="thyromental-no">No</label>
+              </div>
+              <div class="input-field col s12">
+                <label> Mouth Opening < 3 Fingerbreadths? </label>
+                <br>
+                <input name="mouth" class="with-gap" type="radio" id="mouth-yes" ng-model="preop.mouth" ng-value='0'/>
+                <label for="mouth-yes">Yes</label>
+                <input name="mouth" class="with-gap" type="radio" id="mouth-no" ng-model="preop.mouth" ng-value='1'/>
+                <label for="mouth-no">No</label>
+              </div>
+              <div class="input-field col s12">
+                <label> Large Tongue? </label>
+                <br>
+                <input name="tongue" class="with-gap" type="radio" id="tongue-yes" ng-model="preop.tongue" ng-value='0'/>
+                <label for="tongue-yes">Yes</label>
+                <input name="tongue" class="with-gap" type="radio" id="tongue-no" ng-model="preop.tongue" ng-value='1'/>
+                <label for="tongue-no">No</label>
+              </div>
+              <div class="input-field col s12">
+                <label> Neck Mobility reduced ? </label>
+                <br>
+                <input name="neck-mobility" class="with-gap" type="radio" id="neck-mobility-yes" ng-model="preop.neck" ng-value='0'/>
+                <label for="neck-mobility-yes">Yes</label>
+                <input name="neck-mobility" class="with-gap" type="radio" id="neck-mobility-no" ng-model="preop.neck" ng-value='1'/>
+                <label for="neck-mobility-no">No</label>
+              </div>
+              <div class="input-field col s12">
+                <label> Radiation/Surgery to Head or Neck? </label>
+                <br>
+                <input name="radiation-surgery" class="with-gap" type="radio" id="radiation-surgery-yes" ng-model="preop.radiation" ng-value='0'/>
+                <label for="radiation-surgery-yes">Yes</label>
+                <input name="radiation-surgery" class="with-gap" type="radio" id="radiation-surgery-no" ng-model="preop.radiation" ng-value='1'/>
+                <label for="radiation-surgery-no">No</label>
+              </div>
+              <div class="input-field col s12">
+                <label> Congenital Abnormality? </label>
+                <br>
+                <input name="congenital" class="with-gap" type="radio" id="congenital-yes" ng-model="preop.congenital" ng-value='0'/>
+                <label for="congenital-yes">Yes</label>
+                <input name="congenital" class="with-gap" type="radio" id="congenital-no" ng-model="preop.congenital" ng-value='1'/>
+                <label for="congenital-no">No</label>
+              </div>
+              <div class="input-field col s12">
+                <label> Increased Aspiration Risk? </label>
+                <br>
+                <input name="aspiration" class="with-gap" type="radio" id="aspiration-yes" ng-model="preop.aspiration" ng-value='0'/>
+                <label for="aspiration-yes">Yes</label>
+                <input name="aspiration" class="with-gap" type="radio" id="aspiration-no" ng-model="preop.aspiration" ng-value='1'/>
+                <label for="aspiration-no">No</label>
+              </div>
+              <div class="input-field col s12">
+                <label> Raised BMI? </label>
+                <br>
+                <input name="bmi" class="with-gap" type="radio" id="bmi-yes" ng-model="preop.bmi" ng-value='0'/>
+                <label for="bmi-yes">Yes</label>
+                <input name="bmi" class="with-gap" type="radio" id="bmi-no" ng-model="preop.bmi" ng-value='1'/>
+                <label for="bmi-no">No</label>
+              </div>
+              <br>
+              <div class="input-field col s12">
+                <label> Bag Mask Ventilation </label>
+                <br>
+                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-easy" ng-model="bag" ng-value='0'/>
+                <label for="bag-mask-easy">Easy</label>
+                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-oropharyngeal" ng-model="bag" ng-value='1'/>
+                <label for="bag-mask-oropharyngeal">With Oropharyngeal Airway</label>
+                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-nasal" ng-model="bag" ng-value='2'/>
+                <label for="bag-mask-nasal">With Nasal Airway</label>
+                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-two" ng-model="bag" ng-value='3'/>
+                <label for="bag-mask-two">Two Person Technique</label>
+                <input name="bag-mask" class="with-gap" type="radio" id="bag-mask-unsuccessful" ng-model="bag" ng-value='4'/>
+                <label for="bag-mask-unsuccessful">Unsuccessful</label>
+              </div>
+              <br>
+              <h5> Sequence of events </h5>
+              <h6> Attempt 1 </h6>
+              <div class="input-field col s12">
+                <input type="text" id="attempt1-device-used" ng-model="att1.device">
+                <label for="attempt1-device-used">Device Used</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="attempt1-comment" class="materialize-textarea" length="150" maxlength="150" ng-model="att1.comments"></textarea>
+                <label for="attempt1-comment">Comments</label>
+              </div>
+              <div class="input-field col s12">
+                <input name="attempt1-result" class="with-gap" type="radio" id="attempt1-result-success" ng-model="att1.success" ng-value='0'/>
+                <label for="attempt1-result-success">Success</label>
+                <input name="attempt1-result" class="with-gap" type="radio" id="attempt1-result-unsuccessful" ng-model="att1.success" ng-value='1'/>
+                <label for="attempt1-result-unsuccessful">Unsuccessful</label>
+              </div>
+              <br>
+              <h6> Attempt 2 </h6>
+              <div class="input-field col s12">
+                <input type="text" id="attempt2-device-used" ng-model="att2.device">
+                <label for="attempt2-device-used">Device Used</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="attempt2-comment" class="materialize-textarea" length="150" maxlength="150" ng-model="att2.comments"></textarea>
+                <label for="attempt2-comment">Comments</label>
+              </div>
+              <div class="input-field col s12">
+                <input name="attempt2-result" class="with-gap" type="radio" id="attempt2-result-success" ng-model="att2.success" ng-value='0'/>
+                <label for="attempt2-result-success">Success</label>
+                <input name="attempt2-result" class="with-gap" type="radio" id="attempt2-result-unsuccessful" ng-model="att2.success" ng-value='1'/>
+                <label for="attempt2-result-unsuccessful">Unsuccessful</label>
+              </div>
+              <br>
+              <h6> Attempt 3 </h6>
+              <div class="input-field col s12">
+                <input type="text" id="attempt3-device-used" ng-model="att3.device">
+                <label for="attempt3-device-used">Device Used</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="attempt3-comment" class="materialize-textarea" length="150" maxlength="150" ng-model="att3.comments"></textarea>
+                <label for="attempt3-comment">Comments</label>
+              </div>
+              <div class="input-field col s12">
+                <input name="attempt3-result" class="with-gap" type="radio" id="attempt3-result-success" ng-model="att3.success" ng-value='0'/>
+                <label for="attempt3-result-success">Success</label>
+                <input name="attempt3-result" class="with-gap" type="radio" id="attempt3-result-unsuccessful" ng-model="att3.success" ng-value='1'/>
+                <label for="attempt3-result-unsuccessful">Unsuccessful</label>
+              </div>
+              <br>
+              <div class="input-field col s12">
+                <textarea id="further-comments" class="materialize-textarea" length="150" maxlength="150" ng-model="further"></textarea>
+                <label for="further-comments">Further Comments</label>
+              </div>
+            <br>
+
+            <h5> String Form of QR: </h5> {{toValue()}}
+              <br>
+            <h5> QR </h5>
+            <qr type-number="15" correction-level="'M'" size="250" text="toValue()" image="image"></qr>
+            <br>
+            <button class="waves-effect waves-light btn" ng-click="generatePDF()"> Open as PDF </button>
+            <br>
+            <br>
+         </div>
+      </div>
+
+   </body>
+</html>

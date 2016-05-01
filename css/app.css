@@ -1,0 +1,17 @@
+#cartoons {
+height: auto;
+overflow: hidden;
+margin: auto;
+}
+#cartoons img {
+display: inline;
+}
+
+#bullets li {
+	list-style-type:disc
+}
+
+.cartoonimage {
+    width:150px;
+    height:150px;
+}

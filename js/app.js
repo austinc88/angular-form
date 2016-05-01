@@ -45,7 +45,21 @@ var app = angular.module('myApp', ['ja.qr'])
     	comments: "",
     	success: -1
     };
-    $scope.further = ""
+    $scope.further = "";
+
+    $scope.resetPreOP = function() {
+      $scope.preop = {
+        mallampati: -1,
+        thyromental: -1,
+        mouth: -1,
+        tongue: -1,
+        neck: -1,
+        radiation: -1,
+        congenital: -1,
+        aspiration: -1,
+        bmi: -1
+      };
+    };
 
     $scope.toValue = function() {
       return [$scope.date, $scope.institution, $scope.department, $scope.contact.name, $scope.contact.tel, 
@@ -59,12 +73,12 @@ var app = angular.module('myApp', ['ja.qr'])
         var pdf = new jsPDF();
         pdf.setFontSize(12);
         pdf.setFont("times");
-        pdf.text(20,40, 'Dear Patient,');
+        pdf.text(20,40, 'Dear ' + $scope.contact.name + ',');
 
-        pdf.text(20,50, 'As we discussed during our post-operative visit, you underwent general anesthesia (completely asleep');
-        pdf.text(20,55, 'for surgery). This required a breathing tube to be placed in your windpipe to deliver oxygen to your');
-        pdf.text(20,60, 'lungs, heart, brain and other vital organs. When the breathing tube was inserted, it was difficult to place');
-        pdf.text(20,65, 'the breathing tube in your windpipe. This is referred to as a \"Difficult Airway\".');
+        pdf.text(20,50, 'As we discussed during our hospitalization, you needed to have a breathing tube to be placed in your');
+        pdf.text(20,55, 'windpipe to deliver oxygen to your lungs, heart, brain and other vital organs. When the breathing tube');
+        pdf.text(20,60, 'was inserted, it was difficult to place the breathing tube in your windpipe. This is referred to as a');
+        pdf.text(20,65, '\"Difficult Airway\".');
 
         pdf.text(20,75, 'Now that we know that you have a \"Difficult Airway\", it is important that you do the following to help');
         pdf.text(20,80, 'protect yourself.');    
@@ -96,7 +110,7 @@ var app = angular.module('myApp', ['ja.qr'])
 
         pdf.setFontSize(16);
         pdf.setFontType("bold");
-        pdf.text(20,20, "Airway App Data Fields:");
+        pdf.text(20,20, "Difficult Intubation Event Details:");
 
         pdf.setFontSize(12);
         pdf.setFontType("normal");
