@@ -9,6 +9,7 @@ var app = angular.module('myApp', ['ja.qr'])
     angular.element(document).ready(function () {
         $scope.imgData  = $('qr').find('img').attr('ng-src');
     });
+    $scope.patientname = "";
 	  $scope.date = currentTime;
     $scope.institution = "";
     $scope.department = -1;
@@ -73,7 +74,7 @@ var app = angular.module('myApp', ['ja.qr'])
         var pdf = new jsPDF();
         pdf.setFontSize(12);
         pdf.setFont("times");
-        pdf.text(20,40, 'Dear ' + $scope.contact.name + ',');
+        pdf.text(20,40, 'Dear ' + $scope.patientname + ',');
 
         pdf.text(20,50, 'As we discussed during our hospitalization, you needed to have a breathing tube to be placed in your');
         pdf.text(20,55, 'windpipe to deliver oxygen to your lungs, heart, brain and other vital organs. When the breathing tube');

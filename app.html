@@ -9,7 +9,16 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-77206807-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
       <script src = "js/lib/angular.min.js"></script>
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
@@ -17,16 +26,6 @@
       <script type="text/javascript" src="js/lib/angular-qr.min.js"></script>
       <script src = "js/app.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
-      <script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-77201216-1', 'auto');
-		  ga('send', 'pageview');
-
-		</script>
    </head>
    
    <body ng-app="myApp">
@@ -34,17 +33,21 @@
       <!-- Dropdown Structure -->
       <nav>
         <div class="nav-wrapper">
-          <a href="index.html" class="brand-logo">Difficult Intubation App</a>
+        <a href="index.html"><img src="images/laryngoscope3.png" alt="" style="margin-top:5px; width:50px; height:50px"><span class="brand-logo">Difficult Intubation App</span></a>
         </div>
       </nav>
 
       <div class = "container">
-         <h1>Difficult Intubation App</h1>
+         <h4>Please enter the details of the event below:</h4>
       
          <div ng-controller="myCtrl">
               <div class="input-field col s12">
                 <input type="text" format="dd mmm" id="date" class="datepicker" ng-model="date" ><br>
                 <label for="date">Date</label>
+              </div>
+              <div class="input-field col s12">
+                <input type="text" id="patient-name" ng-model="patientname"><br>
+                <label for="patient-name">Patient Name</label>
               </div>
               <div class="input-field col s12">
                 <input type="text" id="institution" ng-model="institution"><br>
@@ -62,7 +65,7 @@
                 <label for="department-other">Other</label>
               </div>
             <br>
-            <h5> Contact </h5>
+            <h5> Healthcare Provider Contact </h5>
               <div class="input-field col s12">
                 <input type="text" id="contact-name" ng-model="contact.name">
                 <label for="contact-name">Name</label>
@@ -228,9 +231,11 @@
                 <label for="further-comments">Further Comments</label>
               </div>
             <br>
-
+            <!---
             <h5> String Form of QR: </h5> {{toValue()}}
               <br>
+
+            -->
             <h5> QR </h5>
             <qr type-number="15" correction-level="'M'" size="250" text="toValue()" image="image"></qr>
             <br>
