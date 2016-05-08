@@ -38,6 +38,16 @@ nav {
     }
 }
 
+@media (max-width: 667px) {
+    span.brand-logo {
+        display: none;
+    }
+
+    div.nav-horiz {
+        text-align: center;
+    }
+}
+
 .vertical-div {
 	width:56px;
     height:100%;
