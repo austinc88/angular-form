@@ -50,6 +50,12 @@
                 <input type="text" id="patient-name" ng-model="patientname"><br>
                 <label for="patient-name">Patient Name</label>
               </div>
+            <br>
+            <h5> Healthcare Provider Contact </h5>
+              <div class="input-field col s12">
+                <input type="text" id="contact-name" ng-model="contact.name">
+                <label for="contact-name">Name</label>
+              </div>
               <div class="input-field col s12">
                 <input type="text" id="institution" ng-model="institution"><br>
                 <label for="institution">Institution</label>
@@ -61,16 +67,11 @@
                 <input name="department" class="with-gap" type="radio" id="department-emergency" ng-model="department" ng-value='1'/>
                 <label for="department-emergency">Emergency</label>
                 <input name="department" class="with-gap" type="radio" id="department-intensive" ng-model="department" ng-value='2'/>
-                <label for="department-intensive">Intensive</label>
+                <label for="department-intensive">Intensive Care</label>
                 <input name="department" class="with-gap" type="radio" id="department-other" ng-model="department" ng-value='3'/>
                 <label for="department-other">Other</label>
               </div>
-            <br>
-            <h5> Healthcare Provider Contact </h5>
-              <div class="input-field col s12">
-                <input type="text" id="contact-name" ng-model="contact.name">
-                <label for="contact-name">Name</label>
-              </div>
+              <br>
               <div class="input-field col s12">
                 <input id="contact-telephone" placeholder="(604) 777-7777" type="tel" class="validate" ng-model="contact.tel">
                 <label for="contact-telephone">Telephone Number</label>
