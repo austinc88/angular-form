@@ -28,6 +28,16 @@ nav {
 	box-shadow: none
 }
 
+@media (max-width: 800px) {
+    .vertical-div {
+        display: none
+    }
+
+    .nav-horiz {
+        margin-top: 0px;
+    }
+}
+
 .vertical-div {
 	width:56px;
     height:100%;
