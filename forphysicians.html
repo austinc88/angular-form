@@ -1,0 +1,81 @@
+<html>
+   <head>
+      <title>Difficult Intubation App</title>
+
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/app.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <script src = "js/lib/angular.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/lib/qrcode.min.js"></script>
+      <script type="text/javascript" src="js/lib/angular-qr.min.js"></script>
+      <script src = "js/app.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+   </head>
+  <body>
+     <div class="vertical-div"></div>
+      <nav>
+        <div class="nav-horiz">
+        <a href="index.html"><img src="images/laryngoscope3.png" alt="" style="margin-top:5px; width:50px; height:50px"><span class="brand-logo">Difficult Intubation App</span></a>
+        </div>
+      </nav>
+        <div class="container">
+        <br>
+        <h4 style="text-align:center"> For Physicians </h4>
+        <br>
+        <button class="accordion">How to use this Website</button>
+        <div class="panel">
+          <h5>Basic Requirements</h5>
+          <p>In order to use this website you will need a computer or tablet that is connected to the internet and connected directly or networked to a printer.</p>
+          <br>
+          <h5>Why should I use this website?</h5>
+          <p>This website provides an easy way to generate a difficult intubation letter without the need to search for a standard physical letter at your institution. A paper letter is generated from this website that should be given to the patient and possibly attached to the patient’s chart for future reference. The letter has a QR code that allows the patient to also store the information onto their smartphone. This provides a secondary place for this important information to be stored and patients are more likely to bring their smartphones with them to their appointments than a medical letter. Generating the letter is free, downloading and using the app in free, and there are no in-app purchases.</p>
+          <br>
+          <h5>How do I generate a letter?</h5>
+          <p>After agreeing to the Terms of Service, choose to create a letter on the following page. Simply enter the data from the clinical event and by clicking on ‘OPEN AS PDF’ at the bottom, a standard difficult intubation letter is generated on the following page. Print a copy of the letter for the patient and you may print a copy for the chart if your institutional or local privacy laws and regulation allow. At the bottom of the letter, there is a QR code that contains the same information as the letter that the patient may use.</p>
+          <br>
+          <h5>Does this website store any data?</h5>
+          <p>The website does not store any patient data and after leaving the page, the information is gone so you will need to print the letter before leaving the web page. For privacy concerns, we do not recommend using public computers to enter the patient information and do recommend closing the browser after generating the letter. We are unable to retrieve any lost data as no data is stored and we are not responsible for any lost or missing data. </p>
+          <p>We do not recommend saving the letter to your computer unless your institutional and local laws permit this. By using this website to generate a letter, it is your responsibility to adhere to your institutional and local privacy laws.</p>
+          <br>
+          <h5>What are the requirements for the app?</h5>
+          <p>There is currently only an Android version of this app.  Patients need a functioning camera on their phone to scan the QR code. An iOS version of the app is on its way.</p>
+          <br>
+          <h5>What if I have questions or want to provide feedback?</h5>
+          <p>We can be best reached by twitter @difficultAW</p>
+        </div>
+
+        <button class="accordion">Resources</button>
+        <div class="panel">
+          <p>
+          <ul>
+          <li>Difficult Airway society website: <a href="http://www.das.uk.com/">http://www.das.uk.com/</a></li>
+          <li>Difficult airway society 2015 guidelines: <a href="http://bja.oxfordjournals.org/content/115/6/827">http://bja.oxfordjournals.org/content/115/6/827</a></li>
+          <li>NAP4: <a href="http://www.rcoa.ac.uk/nap4">http://www.rcoa.ac.uk/nap4</a></li>
+          <li>Obstetric airway guidelines: <a href="http://www.oaa-anaes.ac.uk/ui/content/content.aspx?id=3447">http://www.oaa-anaes.ac.uk/ui/content/content.aspx?id=3447</a></li>
+          </ul>
+          </p>
+        </div>
+        </div>
+      </div>
+      <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+          acc[i].onclick = function(){
+              this.classList.toggle("active");
+              this.nextElementSibling.classList.toggle("show");
+        }
+      }
+      </script>
+
+  </body>   
+</html>

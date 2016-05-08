@@ -1,0 +1,83 @@
+<html>
+   <head>
+      <title>Difficult Intubation App</title>
+
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/app.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <script src = "js/lib/angular.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/lib/qrcode.min.js"></script>
+      <script type="text/javascript" src="js/lib/angular-qr.min.js"></script>
+      <script src = "js/app.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+   </head>
+  <body>
+     <div class="vertical-div"></div>
+      <nav>
+        <div class="nav-horiz">
+        <a href="index.html"><img src="images/laryngoscope3.png" alt="" style="margin-top:5px; width:50px; height:50px"><span class="brand-logo">Difficult Intubation App</span></a>
+        </div>
+      </nav>
+        <div class="container">
+        <br>
+        <h4 style="text-align:center"> For Patients </h4>
+        <br>
+        <button class="accordion">Difficult Airway Information</button>
+        <div class="panel">
+          <h5>What is a difficult airway?</h5>
+          <p>Often for surgery and in emergency situations, a breathing tube needs to be placed into your windpipe, which connects your mouth and nose to your lungs. This process is called 'intubation'. This may be done to help you breathe and/or to protect your lungs. To place the breathing tube into the windpipe, the vocal cords need to be seen. There are different instruments that help the doctor see the vocal cords with the most common one being a laryngoscope.</p>
+          <p> In some situations, the doctor encounters some difficulty seeing the vocal cords and/or placing the breathing tube into the windpipe. This is known as a 'difficult airway'or 'difficult intubation'. Fortunately, in most cases, the doctor may be able to temporarily supply your lungs with air and oxygen through a mask or other device. If the doctor cannot do this, it can become a life threatening emergency situation and this occurs in less than 1 in 5000 patients.</p>
+          <br>
+          <h5>How do I know if I have a difficult airway?</h5>
+          <p>Sometimes based on the doctor’s exam, he or she may be able to identify a patient as having a potential difficult airway. Other times it is not recognized until the patient requires intubation and difficulty is encountered. If difficulty is encountered in placing a breathing tube in to your windpipe, your doctor will tell you so that you will have this important information for the next time you need to be intubated.</p>
+          <br>
+          <h5>Why do I have a difficult airway?</h5>
+          <p>Patients may have a difficult airway for a number of reasons. Sometimes the shape of a person’s face or their jaw may make it difficult to see the vocal cords. Other reasons include being unable to open one’s mouth, previous surgery or radiation to the face, or masses obstructing the airway.</p>
+          <br>
+          <h5>What can be done about my difficult airway?</h5>
+          <p>There are different ways a difficult airway may be managed. Today there are many different devices that help the doctor place the breathing tube safely into the windpipe. In addition to laryngoscopes, there are many devices that have cameras that help the doctor see the vocal cords. Letting your doctor know about a difficult airway will allow him or her to select the safest way to place the breathing tube into your windpipe. Your doctor can explain these to you.</p>
+          <br>
+          <h5>What should I do about my difficult airway?</h5>
+          <p>If you have been identified as having a difficult airway, it is very important to carry this information with you. If you have been given a letter, you should make copies of it and bring it to your medical appointments, particularly if you are seeing an anesthesiologist before surgery. It is strongly recommended that you let your family members know and get a medical alert bracelet in case you need intubation and you are unconscious.</p>
+        </div>
+
+        <button class="accordion">How to Use This App</button>
+        <div class="panel">
+        <h5>I have a difficult intubation letter, now what?</h5>
+        <p>If you have a difficult intubation letter and have been directed to this website, it means that you have the option of downloading the free app and storing the information contained on the letter onto your smartphone. You do not need to do this if you do not want, and you can simply carry the letter with you to your doctor appointments. </p>
+        <p>If you choose to use the app, you just need to simply download and open the app. You will then need to enable the app to use the camera on your phone. With the camera on your smartphone, you simply scan the QR code at the bottom of the letter, which is the square box with the black and white speckles. We recommend that you check the information on your smartphone with the letter to make sure all the information is the same. </p>
+        <p>You can then provide this important information other doctors looking after you. It contains information about why you may have a difficult airway and what worked and did not work for placing the breathing tube into your windpipe.</p>
+        <br>
+        <h5>What are the requirements for the app?</h5>
+        <p>There is only an Android version of this app. Your phone needs a functioning camera to scan the QR code.  An iOS version is on its way.</p>
+        <br>
+        <h5>What about my privacy?</h5>
+        <p>This website does not store any of your data and the data is stored only on your smartphone. If you are concerned about others having access to this information if you lose your phone, we recommend you put a password onto your phone.  It is your responsibility to share this data with doctors looking after you and it is up to you whom you wish to share this data with. You also have the option of storing this data onto backup devices such as your personal computer or a cloud. This may be useful when you change your phone so that this important information is not lost, but where you choose to store this data is your responsibility.</p>
+        <br>
+        <h5>What if I have questions or want to provide feedback?</h5>
+        <p>We can be best reached by twitter @difficultAW</p>
+        </div>
+        </div>
+      </div>
+      <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+          acc[i].onclick = function(){
+              this.classList.toggle("active");
+              this.nextElementSibling.classList.toggle("show");
+        }
+      }
+      </script>
+
+  </body>   
+</html>
