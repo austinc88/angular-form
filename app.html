@@ -43,7 +43,7 @@
       
          <div ng-controller="myCtrl">
               <div class="input-field col s12">
-                <input type="text" format="dd mmm" id="date" class="datepicker" ng-model="date" ><br>
+                <input type="text" format="dd mmm" id="date" ng-model="date" ><br>
                 <label for="date">Date</label>
               </div>
               <div class="input-field col s12">
@@ -232,10 +232,10 @@
                 <label for="further-comments">Further Comments</label>
               </div>
             <br>
-            
+            <!--
             <h5> String Form of QR: </h5> {{toValue()}}
               <br>
-
+            -->
             
             <h5> QR </h5>
             <qr type-number="15" correction-level="'M'" size="250" text="toValue()" image="image"></qr>
